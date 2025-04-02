@@ -1,15 +1,15 @@
 {
-    "name": "Offline Item Gallery",
-    "short_name": "ItemGallery",
+    "name": "Maui HJ & BBT Stock Lists",
+    "short_name": "MauiStockLists",
     "start_url": "index.html",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#ffffff",
     "icons": [
         {
-            "src": "images/kirkland_milk.jpeg",
+            "src": "images/HJ_Logo.jpg",
             "sizes": "192x192",
-            "type": "image/jpeg"
+            "type": "image/jpg"
         }
     ]
 }
