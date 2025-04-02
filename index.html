@@ -17,6 +17,7 @@
             padding: 10px;
             background-color: #f8f8f8;
         }
+
         #search-input {
             width: 100%;
             padding: 10px;
@@ -25,6 +26,7 @@
             border-radius: 5px;
             border: 1px solid #ccc;
         }
+
         .item {
             background: #fff;
             margin-bottom: 15px;
@@ -40,55 +42,449 @@
             border-radius: 5px;
             margin: 0 auto;
         }
+
         .item-name {
             margin-top: 10px;
             font-size: 16px;
             font-weight: bold;
             color: #333;
         }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            text-align: center;
+        }
+
+        .lightbox:target {
+            display: block;
+        }
+
+        .popup-box {
+        position: relative;
+        top: 5%;
+        margin: 0 auto;
+        width: 80%;
+        max-width: 600px;
+        background: white;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .popup-box img {
+            width: 100%;
+            height: auto;
+            max-height: 80vh; /* use screen height to prevent overflow */
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
-    <h1 style="text-align:center; font-size:24px; font-weight:bold; margin-bottom: 20px;">
-        Maui Inventory List
-    </h1>
+    <h1 style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    ">
+    <img src="images/HJ_Logo.png" alt="Left Logo" style="height: 75px;">
+    Maui Inventory List
+    <img src="images/Maui_BBT_Logo.jpg" alt="Right Logo" style="height: 75px;">
+</h1>
 
 <input type="text" id="search-input" placeholder="Search items...">
-
 <div id="items-container">
-    <!-- Existing item list remains here -->
-    <div class="item"><img src="images/water.jpeg" alt="Costco Water"><div class="item-name">Costco Water</div></div>
-    <div class="item"><img src="images/heinz_ketchup.jpeg" alt="Heinz Ketchup #10/114 OZ (51290)"><div class="item-name">Heinz Ketchup #10/114 OZ (51290)</div></div>
-    <div class="item"><img src="images/spring_roll.jpeg" alt="Bibigo Spring Rolls (1777524)"><div class="item-name">Bibigo Spring Rolls (1777524)</div></div>
-    <div class="item"><img src="images/strawberry.jpeg" alt="Kirkland Organic Strawberries (904984)"><div class="item-name">Kirkland Organic Strawberries (904984)</div></div>
-    <div class="item"><img src="images/cutlery.jpeg" alt="Repurpose Compostable Cutlery (1675533)"><div class="item-name">Repurpose Compostable Cutlery (1675533)</div></div>
-    <div class="item"><img src="images/spoons.jpeg" alt="Repurpose Compostable Spoons (1675884)"><div class="item-name">Repurpose Compostable Spoons (1675884)</div></div>
-    <div class="item"><img src="images/forks.jpeg" alt="Repurpose Compostable Forks (1676194)"><div class="item-name">Repurpose Compostable Forks (1676194)</div></div>
-    <div class="item"><img src="images/kraft_cheese.jpeg" alt="Kraft American Signles (96928)"><div class="item-name">Kraft American Signles (96928)</div></div>
-    <div class="item"><img src="images/hoagie_tray.jpeg" alt="World Centric 6x9 Hoagie Try (1033413)"><div class="item-name">World Centric 6x9 Hoagie Try (1033413)</div></div>
-    <div class="item"><img src="images/canola_oil.jpeg" alt="Kirkland Canola Oil (11.55lbs) (906410)"><div class="item-name">Kirkland Canola Oil (11.55lbs) (906410)</div></div>
-    <div class="item"><img src="images/wheat_bread.jpeg" alt="LA Tour Bakery Wheat Bread (1271913)"><div class="item-name">LA Tour Bakery Wheat Bread (1271913)</div></div>
-    <div class="item"><img src="images/string_cheese.jpeg" alt="Frigo Cheeseheads String Cheese (843323)"><div class="item-name">Frigo Cheeseheads String Cheese (843323)</div></div>
-    <div class="item"><img src="images/mango_chunk.jpeg" alt="Clovis Farms Mango Chuck (1750271)"><div class="item-name">Clovis Farms Mango Chuck (1750271)</div></div>
-    <div class="item"><img src="images/oat_milk.jpeg" alt="Kirkland Oat Organic Beverage (1272413)"><div class="item-name">Kirkland Oat Organic Beverage (1272413)</div></div>
-    <div class="item"><img src="images/soybean_salad_oil.jpeg" alt="Kirkland Soybean Salad Oil 35lbs (71011)"><div class="item-name">Kirkland Soybean Salad Oil 35lbs (71011)</div></div>
-    <div class="item"><img src="images/brown_sugar.jpeg" alt="Organic Brown Sugar 7.5 (1582259)"><div class="item-name">Organic Brown Sugar 7.5 (1582259)</div></div>
-    <div class="item"><img src="images/chicken_wings.jpeg" alt="Kirkland Chicken Wings 10lb (1294446)"><div class="item-name">Kirkland Chicken Wings 10lb (1294446)</div></div>
-    <div class="item"><img src="images/acai_smoothie_pack.jpeg" alt="Sambazon Acai Pack 12ct (1178514)"><div class="item-name">Sambazon Acai Pack 12ct (1178514)</div></div>
-    <div class="item"><img src="images/chicken_breasts.jpeg" alt="Tyson Chicken Brest Boneless 10lbs (4960)"><div class="item-name">Tyson Chicken Brest Boneless 10lbs (4960)</div></div>
-    <div class="item"><img src="images/butter.jpeg" alt="Kirkland Butter Solids 4/1 lb (44111)"><div class="item-name">Kirkland Butter Solids 4/1 lb (44111)</div></div>
-    <div class="item"><img src="images/potato_cheese_dogs.jpeg" alt="Pulmuone Potato Cheese Dog (1751055)"><div class="item-name">Pulmuone Potato Cheese Dog (1751055)</div></div>
-    <div class="item"><img src="images/kosher_salt_flakes.jpeg" alt="Diamond Kosher Salt (1848505)"><div class="item-name">Diamond Kosher Salt (1848505)</div></div>
-    <div class="item"><img src="images/homai_rice.jpeg" alt="Homai Rice (206)"><div class="item-name">Homai Rice (206)</div></div>
-    <div class="item"><img src="images/oreo.jpeg" alt="Oreo Cookie (1664082)"><div class="item-name">Oreo Cookie (1664082)</div></div>
-    <div class="item"><img src="images/hamburger_buns.jpeg" alt="Francisco Deli Hamburger Buns (1305348)"><div class="item-name">Francisco Deli Hamburger Buns (1305348)</div></div>
-    <div class="item"><img src="images/mayo.jpeg" alt="Wilsey Mayo (39719)"><div class="item-name">Wilsey Mayo (39719)</div></div>
-    <div class="item"><img src="images/granulated_sugar.jpeg" alt="C & H Granulated Sugar (814602)"><div class="item-name">C & H Granulated Sugar (814602)</div></div>
-    <div class="item"><img src="images/cheddar_monetary_jack.jpeg" alt="Kirkland Cheddar Monterey Jack (22107)"><div class="item-name">Kirkland Cheddar Monterey Jack (22107)</div></div>
-    <div class="item"><img src="images/kirkland_milk.jpeg" alt="Kirkland Homogenized Milk"><div class="item-name">Kirkland Homogenized Milk</div></div>
-    <div class="item"><img src="images/heinz_apple_cider_vinegar.jpeg" alt="Heinz Apple Cider Vinegar (716667)"><div class="item-name">Heinz Apple Cider Vinegar (716667)</div></div>
-    <div class="item"><img src="images/romaine_hearts.jpeg" alt="Romaine Hearts 6ct (39036)"><div class="item-name">Romaine Hearts 6ct (39036)</div></div>
-    <div class="item"><img src="images/paper_straws.heic" alt="7.75 Jumbo White Paper Straw"><div class="item-name">7.75 Jumbo White Paper Straw</div></div>
+
+    <div class="item">
+        <a href="#popup0">
+            <img src="images/water.jpeg" alt="Costco Water">
+        </a>
+        <div class="item-name">Costco Water</div>
+    </div>
+    <a href="#" class="lightbox" id="popup0">
+        <div class="popup-box">
+            <img src="images/water.jpeg" alt="Costco Water">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup1">
+            <img src="images/heinz_ketchup.jpeg" alt="Heinz Ketchup #10/114 OZ (51290)">
+        </a>
+        <div class="item-name">Heinz Ketchup #10/114 OZ (51290)</div>
+    </div>
+    <a href="#" class="lightbox" id="popup1">
+        <div class="popup-box">
+            <img src="images/heinz_ketchup.jpeg" alt="Heinz Ketchup #10/114 OZ (51290)">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup2">
+            <img src="images/spring_roll.jpeg" alt="Bibigo Spring Rolls (1777524)">
+        </a>
+        <div class="item-name">Bibigo Spring Rolls (1777524)</div>
+    </div>
+    <a href="#" class="lightbox" id="popup2">
+        <div class="popup-box">
+            <img src="images/spring_roll.jpeg" alt="Bibigo Spring Rolls (1777524)">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup3">
+            <img src="images/strawberry.jpeg" alt="Kirkland Organic Strawberries (904984)">
+        </a>
+        <div class="item-name">Kirkland Organic Strawberries (904984)</div>
+    </div>
+    <a href="#" class="lightbox" id="popup3">
+        <div class="popup-box">
+            <img src="images/strawberry.jpeg" alt="Kirkland Organic Strawberries (904984)">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup4">
+            <img src="images/cutlery.jpeg" alt="Repurpose Compostable Cutlery (1675533)">
+        </a>
+        <div class="item-name">Repurpose Compostable Cutlery (1675533)</div>
+    </div>
+    <a href="#" class="lightbox" id="popup4">
+        <div class="popup-box">
+            <img src="images/cutlery.jpeg" alt="Repurpose Compostable Cutlery (1675533)">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup5">
+            <img src="images/spoons.jpeg" alt="Repurpose Compostable Spoons (1675884)">
+        </a>
+        <div class="item-name">Repurpose Compostable Spoons (1675884)</div>
+    </div>
+    <a href="#" class="lightbox" id="popup5">
+        <div class="popup-box">
+            <img src="images/spoons.jpeg" alt="Repurpose Compostable Spoons (1675884)">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup6">
+            <img src="images/forks.jpeg" alt="Repurpose Compostable Forks (1676194)">
+        </a>
+        <div class="item-name">Repurpose Compostable Forks (1676194)</div>
+    </div>
+    <a href="#" class="lightbox" id="popup6">
+        <div class="popup-box">
+            <img src="images/forks.jpeg" alt="Repurpose Compostable Forks (1676194)">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup7">
+            <img src="images/kraft_cheese.jpeg" alt="Kraft American Signles (96928)">
+        </a>
+        <div class="item-name">Kraft American Signles (96928)</div>
+    </div>
+    <a href="#" class="lightbox" id="popup7">
+        <div class="popup-box">
+            <img src="images/kraft_cheese.jpeg" alt="Kraft American Signles (96928)">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup8">
+            <img src="images/hoagie_tray.jpeg" alt="World Centric 6x9 Hoagie Try (1033413)">
+        </a>
+        <div class="item-name">World Centric 6x9 Hoagie Try (1033413)</div>
+    </div>
+    <a href="#" class="lightbox" id="popup8">
+        <div class="popup-box">
+            <img src="images/hoagie_tray.jpeg" alt="World Centric 6x9 Hoagie Try (1033413)">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup9">
+            <img src="images/canola_oil.jpeg" alt="Kirkland Canola Oil (11.55lbs) (906410)">
+        </a>
+        <div class="item-name">Kirkland Canola Oil (11.55lbs) (906410)</div>
+    </div>
+    <a href="#" class="lightbox" id="popup9">
+        <div class="popup-box">
+            <img src="images/canola_oil.jpeg" alt="Kirkland Canola Oil (11.55lbs) (906410)">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup10">
+            <img src="images/wheat_bread.jpeg" alt="LA Tour Bakery Wheat Bread (1271913)">
+        </a>
+        <div class="item-name">LA Tour Bakery Wheat Bread (1271913)</div>
+    </div>
+    <a href="#" class="lightbox" id="popup10">
+        <div class="popup-box">
+            <img src="images/wheat_bread.jpeg" alt="LA Tour Bakery Wheat Bread (1271913)">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup11">
+            <img src="images/string_cheese.jpeg" alt="Frigo Cheeseheads String Cheese (843323)">
+        </a>
+        <div class="item-name">Frigo Cheeseheads String Cheese (843323)</div>
+    </div>
+    <a href="#" class="lightbox" id="popup11">
+        <div class="popup-box">
+            <img src="images/string_cheese.jpeg" alt="Frigo Cheeseheads String Cheese (843323)">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup12">
+            <img src="images/mango_chunk.jpeg" alt="Clovis Farms Mango Chuck (1750271)">
+        </a>
+        <div class="item-name">Clovis Farms Mango Chuck (1750271)</div>
+    </div>
+    <a href="#" class="lightbox" id="popup12">
+        <div class="popup-box">
+            <img src="images/mango_chunk.jpeg" alt="Clovis Farms Mango Chuck (1750271)">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup13">
+            <img src="images/oat_milk.jpeg" alt="Kirkland Oat Organic Beverage (1272413)">
+        </a>
+        <div class="item-name">Kirkland Oat Organic Beverage (1272413)</div>
+    </div>
+    <a href="#" class="lightbox" id="popup13">
+        <div class="popup-box">
+            <img src="images/oat_milk.jpeg" alt="Kirkland Oat Organic Beverage (1272413)">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup14">
+            <img src="images/soybean_salad_oil.jpeg" alt="Kirkland Soybean Salad Oil 35lbs (71011)">
+        </a>
+        <div class="item-name">Kirkland Soybean Salad Oil 35lbs (71011)</div>
+    </div>
+    <a href="#" class="lightbox" id="popup14">
+        <div class="popup-box">
+            <img src="images/soybean_salad_oil.jpeg" alt="Kirkland Soybean Salad Oil 35lbs (71011)">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup15">
+            <img src="images/brown_sugar.jpeg" alt="Organic Brown Sugar 7.5 (1582259)">
+        </a>
+        <div class="item-name">Organic Brown Sugar 7.5 (1582259)</div>
+    </div>
+    <a href="#" class="lightbox" id="popup15">
+        <div class="popup-box">
+            <img src="images/brown_sugar.jpeg" alt="Organic Brown Sugar 7.5 (1582259)">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup16">
+            <img src="images/chicken_wings.jpeg" alt="Kirkland Chicken Wings 10lb (1294446)">
+        </a>
+        <div class="item-name">Kirkland Chicken Wings 10lb (1294446)</div>
+    </div>
+    <a href="#" class="lightbox" id="popup16">
+        <div class="popup-box">
+            <img src="images/chicken_wings.jpeg" alt="Kirkland Chicken Wings 10lb (1294446)">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup17">
+            <img src="images/acai_smoothie_pack.jpeg" alt="Sambazon Acai Pack 12ct (1178514)">
+        </a>
+        <div class="item-name">Sambazon Acai Pack 12ct (1178514)</div>
+    </div>
+    <a href="#" class="lightbox" id="popup17">
+        <div class="popup-box">
+            <img src="images/acai_smoothie_pack.jpeg" alt="Sambazon Acai Pack 12ct (1178514)">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup18">
+            <img src="images/chicken_breasts.jpeg" alt="Tyson Chicken Brest Boneless 10lbs (4960)">
+        </a>
+        <div class="item-name">Tyson Chicken Brest Boneless 10lbs (4960)</div>
+    </div>
+    <a href="#" class="lightbox" id="popup18">
+        <div class="popup-box">
+            <img src="images/chicken_breasts.jpeg" alt="Tyson Chicken Brest Boneless 10lbs (4960)">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup19">
+            <img src="images/butter.jpeg" alt="Kirkland Butter Solids 4/1 lb (44111)">
+        </a>
+        <div class="item-name">Kirkland Butter Solids 4/1 lb (44111)</div>
+    </div>
+    <a href="#" class="lightbox" id="popup19">
+        <div class="popup-box">
+            <img src="images/butter.jpeg" alt="Kirkland Butter Solids 4/1 lb (44111)">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup20">
+            <img src="images/potato_cheese_dogs.jpeg" alt="Pulmuone Potato Cheese Dog (1751055)">
+        </a>
+        <div class="item-name">Pulmuone Potato Cheese Dog (1751055)</div>
+    </div>
+    <a href="#" class="lightbox" id="popup20">
+        <div class="popup-box">
+            <img src="images/potato_cheese_dogs.jpeg" alt="Pulmuone Potato Cheese Dog (1751055)">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup21">
+            <img src="images/kosher_salt_flakes.jpeg" alt="Diamond Kosher Salt (1848505)">
+        </a>
+        <div class="item-name">Diamond Kosher Salt (1848505)</div>
+    </div>
+    <a href="#" class="lightbox" id="popup21">
+        <div class="popup-box">
+            <img src="images/kosher_salt_flakes.jpeg" alt="Diamond Kosher Salt (1848505)">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup22">
+            <img src="images/homai_rice.jpeg" alt="Homai Rice (206)">
+        </a>
+        <div class="item-name">Homai Rice (206)</div>
+    </div>
+    <a href="#" class="lightbox" id="popup22">
+        <div class="popup-box">
+            <img src="images/homai_rice.jpeg" alt="Homai Rice (206)">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup23">
+            <img src="images/oreo.jpeg" alt="Oreo Cookie (1664082)">
+        </a>
+        <div class="item-name">Oreo Cookie (1664082)</div>
+    </div>
+    <a href="#" class="lightbox" id="popup23">
+        <div class="popup-box">
+            <img src="images/oreo.jpeg" alt="Oreo Cookie (1664082)">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup24">
+            <img src="images/hamburger_buns.jpeg" alt="Francisco Deli Hamburger Buns (1305348)">
+        </a>
+        <div class="item-name">Francisco Deli Hamburger Buns (1305348)</div>
+    </div>
+    <a href="#" class="lightbox" id="popup24">
+        <div class="popup-box">
+            <img src="images/hamburger_buns.jpeg" alt="Francisco Deli Hamburger Buns (1305348)">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup25">
+            <img src="images/mayo.jpeg" alt="Wilsey Mayo (39719)">
+        </a>
+        <div class="item-name">Wilsey Mayo (39719)</div>
+    </div>
+    <a href="#" class="lightbox" id="popup25">
+        <div class="popup-box">
+            <img src="images/mayo.jpeg" alt="Wilsey Mayo (39719)">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup26">
+            <img src="images/granulated_sugar.jpeg" alt="C & H Granulated Sugar (814602)">
+        </a>
+        <div class="item-name">C & H Granulated Sugar (814602)</div>
+    </div>
+    <a href="#" class="lightbox" id="popup26">
+        <div class="popup-box">
+            <img src="images/granulated_sugar.jpeg" alt="C & H Granulated Sugar (814602)">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup27">
+            <img src="images/cheddar_monetary_jack.jpeg" alt="Kirkland Cheddar Monterey Jack (22107)">
+        </a>
+        <div class="item-name">Kirkland Cheddar Monterey Jack (22107)</div>
+    </div>
+    <a href="#" class="lightbox" id="popup27">
+        <div class="popup-box">
+            <img src="images/cheddar_monetary_jack.jpeg" alt="Kirkland Cheddar Monterey Jack (22107)">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup28">
+            <img src="images/kirkland_milk.jpeg" alt="Kirkland Homogenized Milk">
+        </a>
+        <div class="item-name">Kirkland Homogenized Milk</div>
+    </div>
+    <a href="#" class="lightbox" id="popup28">
+        <div class="popup-box">
+            <img src="images/kirkland_milk.jpeg" alt="Kirkland Homogenized Milk">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup29">
+            <img src="images/heinz_apple_cider_vinegar.jpeg" alt="Heinz Apple Cider Vinegar (716667)">
+        </a>
+        <div class="item-name">Heinz Apple Cider Vinegar (716667)</div>
+    </div>
+    <a href="#" class="lightbox" id="popup29">
+        <div class="popup-box">
+            <img src="images/heinz_apple_cider_vinegar.jpeg" alt="Heinz Apple Cider Vinegar (716667)">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup30">
+            <img src="images/romaine_hearts.jpeg" alt="Romaine Hearts 6ct (39036)">
+        </a>
+        <div class="item-name">Romaine Hearts 6ct (39036)</div>
+    </div>
+    <a href="#" class="lightbox" id="popup30">
+        <div class="popup-box">
+            <img src="images/romaine_hearts.jpeg" alt="Romaine Hearts 6ct (39036)">
+        </div>
+    </a>
+    
+    <div class="item">
+        <a href="#popup31">
+            <img src="images/paper_straws.heic" alt="7.75 Jumbo White Paper Straw">
+        </a>
+        <div class="item-name">7.75 Jumbo White Paper Straw</div>
+    </div>
+    <a href="#" class="lightbox" id="popup31">
+        <div class="popup-box">
+            <img src="images/paper_straws.heic" alt="7.75 Jumbo White Paper Straw">
+        </div>
+    </a>
 </div>
 
 <script>
