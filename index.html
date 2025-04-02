@@ -1,428 +1,74 @@
 <!DOCTYPE html>
 
 <html lang="en">
-
 <head>
-  <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Maui HJ &amp; BBT Stock List</title>
-  <link href="manifest.json" rel="manifest" />
-  <link href="css/styles.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter&amp;display=swap" rel="stylesheet" />
-  <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Maui HJ &amp; BBT Stock List</title>
+<link href="manifest.json" rel="manifest"/>
+<link href="css/styles.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter&amp;display=swap" rel="stylesheet"/>
+<script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js');
     }
   </script>
 </head>
-
 <body>
-  <!-- Include header -->
-  <div id="header"></div>
-  <script>
+<!-- Include header -->
+<div id="header"></div>
+<script>
     fetch('components/header.html')
       .then(response => response.text())
       .then(data => { document.getElementById('header').innerHTML = data; });
   </script>
-  <div id="tag-filters"><span class="tag-filter" data-filter="all"
-      style="background-color: #ccc; color: white;">All</span><span class="tag-filter" data-filter="hj"
-      style="background-color: #4CAF50; color: white;">HJ</span><span class="tag-filter" data-filter="bbt"
-      style="background-color: #2196F3; color: white;">BBT</span></div><input id="search-input"
-    placeholder="Search items..." type="text" />
-  <div id="items-container">
-    <div class="item" data-tags="hj">
-      <a href="#popup0">
-        <img alt="Costco Water" src="images/water.jpg" />
-      </a>
-      <div class="item-name">Costco Water</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup0">
-      <div class="popup-box">
-        <img alt="Costco Water" src="images/water.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup1">
-        <img alt="Heinz Ketchup #10/114 OZ (51290)" src="images/heinz_ketchup.jpg" />
-      </a>
-      <div class="item-name">Heinz Ketchup #10/114 OZ (51290)</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup1">
-      <div class="popup-box">
-        <img alt="Heinz Ketchup #10/114 OZ (51290)" src="images/heinz_ketchup.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup2">
-        <img alt="Bibigo Spring Rolls (1777524)" src="images/spring_roll.jpg" />
-      </a>
-      <div class="item-name">Bibigo Spring Rolls (1777524)</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup2">
-      <div class="popup-box">
-        <img alt="Bibigo Spring Rolls (1777524)" src="images/spring_roll.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup3">
-        <img alt="Kirkland Organic Strawberries (904984)" src="images/strawberry.jpg" />
-      </a>
-      <div class="item-name">Kirkland Organic Strawberries (904984)</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup3">
-      <div class="popup-box">
-        <img alt="Kirkland Organic Strawberries (904984)" src="images/strawberry.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup4">
-        <img alt="Repurpose Compostable Cutlery (1675533)" src="images/cutlery.jpg" />
-      </a>
-      <div class="item-name">Repurpose Compostable Cutlery (1675533)</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup4">
-      <div class="popup-box">
-        <img alt="Repurpose Compostable Cutlery (1675533)" src="images/cutlery.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup5">
-        <img alt="Repurpose Compostable Spoons (1675884)" src="images/spoons.jpg" />
-      </a>
-      <div class="item-name">Repurpose Compostable Spoons (1675884)</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup5">
-      <div class="popup-box">
-        <img alt="Repurpose Compostable Spoons (1675884)" src="images/spoons.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup6">
-        <img alt="Repurpose Compostable Forks (1676194)" src="images/forks.jpg" />
-      </a>
-      <div class="item-name">Repurpose Compostable Forks (1676194)</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup6">
-      <div class="popup-box">
-        <img alt="Repurpose Compostable Forks (1676194)" src="images/forks.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup7">
-        <img alt="Kraft American Signles (96928)" src="images/kraft_cheese.jpg" />
-      </a>
-      <div class="item-name">Kraft American Signles (96928)</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup7">
-      <div class="popup-box">
-        <img alt="Kraft American Signles (96928)" src="images/kraft_cheese.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup8">
-        <img alt="World Centric 6x9 Hoagie Try (1033413)" src="images/hoagie_tray.jpg" />
-      </a>
-      <div class="item-name">World Centric 6x9 Hoagie Try (1033413)</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup8">
-      <div class="popup-box">
-        <img alt="World Centric 6x9 Hoagie Try (1033413)" src="images/hoagie_tray.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup9">
-        <img alt="Kirkland Canola Oil (11.55lbs) (906410)" src="images/canola_oil.jpg" />
-      </a>
-      <div class="item-name">Kirkland Canola Oil (11.55lbs) (906410)</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup9">
-      <div class="popup-box">
-        <img alt="Kirkland Canola Oil (11.55lbs) (906410)" src="images/canola_oil.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup10">
-        <img alt="LA Tour Bakery Wheat Bread (1271913)" src="images/wheat_bread.jpg" />
-      </a>
-      <div class="item-name">LA Tour Bakery Wheat Bread (1271913)</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup10">
-      <div class="popup-box">
-        <img alt="LA Tour Bakery Wheat Bread (1271913)" src="images/wheat_bread.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup11">
-        <img alt="Frigo Cheeseheads String Cheese (843323)" src="images/string_cheese.jpg" />
-      </a>
-      <div class="item-name">Frigo Cheeseheads String Cheese (843323)</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup11">
-      <div class="popup-box">
-        <img alt="Frigo Cheeseheads String Cheese (843323)" src="images/string_cheese.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup12">
-        <img alt="Clovis Farms Mango Chuck (1750271)" src="images/mango_chunk.jpg" />
-      </a>
-      <div class="item-name">Clovis Farms Mango Chuck (1750271)</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup12">
-      <div class="popup-box">
-        <img alt="Clovis Farms Mango Chuck (1750271)" src="images/mango_chunk.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup13">
-        <img alt="Kirkland Oat Organic Beverage (1272413)" src="images/oat_milk.jpg" />
-      </a>
-      <div class="item-name">Kirkland Oat Organic Beverage (1272413)</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup13">
-      <div class="popup-box">
-        <img alt="Kirkland Oat Organic Beverage (1272413)" src="images/oat_milk.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup14">
-        <img alt="Kirkland Soybean Salad Oil 35lbs (71011)" src="images/soybean_salad_oil.jpg" />
-      </a>
-      <div class="item-name">Kirkland Soybean Salad Oil 35lbs (71011)</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup14">
-      <div class="popup-box">
-        <img alt="Kirkland Soybean Salad Oil 35lbs (71011)" src="images/soybean_salad_oil.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup15">
-        <img alt="Organic Brown Sugar 7.5 (1582259)" src="images/brown_sugar.jpg" />
-      </a>
-      <div class="item-name">Organic Brown Sugar 7.5 (1582259)</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup15">
-      <div class="popup-box">
-        <img alt="Organic Brown Sugar 7.5 (1582259)" src="images/brown_sugar.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup16">
-        <img alt="Kirkland Chicken Wings 10lb (1294446)" src="images/chicken_wings.jpg" />
-      </a>
-      <div class="item-name">Kirkland Chicken Wings 10lb (1294446)</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup16">
-      <div class="popup-box">
-        <img alt="Kirkland Chicken Wings 10lb (1294446)" src="images/chicken_wings.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup17">
-        <img alt="Sambazon Acai Pack 12ct (1178514)" src="images/acai_smoothie_pack.jpg" />
-      </a>
-      <div class="item-name">Sambazon Acai Pack 12ct (1178514)</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup17">
-      <div class="popup-box">
-        <img alt="Sambazon Acai Pack 12ct (1178514)" src="images/acai_smoothie_pack.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup18">
-        <img alt="Tyson Chicken Brest Boneless 10lbs (4960)" src="images/chicken_breasts.jpg" />
-      </a>
-      <div class="item-name">Tyson Chicken Brest Boneless 10lbs (4960)</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup18">
-      <div class="popup-box">
-        <img alt="Tyson Chicken Brest Boneless 10lbs (4960)" src="images/chicken_breasts.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup19">
-        <img alt="Kirkland Butter Solids 4/1 lb (44111)" src="images/butter.jpg" />
-      </a>
-      <div class="item-name">Kirkland Butter Solids 4/1 lb (44111)</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup19">
-      <div class="popup-box">
-        <img alt="Kirkland Butter Solids 4/1 lb (44111)" src="images/butter.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup20">
-        <img alt="Pulmuone Potato Cheese Dog (1751055)" src="images/potato_cheese_dogs.jpg" />
-      </a>
-      <div class="item-name">Pulmuone Potato Cheese Dog (1751055)</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup20">
-      <div class="popup-box">
-        <img alt="Pulmuone Potato Cheese Dog (1751055)" src="images/potato_cheese_dogs.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup21">
-        <img alt="Diamond Kosher Salt (1848505)" src="images/kosher_salt_flakes.jpg" />
-      </a>
-      <div class="item-name">Diamond Kosher Salt (1848505)</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup21">
-      <div class="popup-box">
-        <img alt="Diamond Kosher Salt (1848505)" src="images/kosher_salt_flakes.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup22">
-        <img alt="Homai Rice (206)" src="images/homai_rice.jpg" />
-      </a>
-      <div class="item-name">Homai Rice (206)</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup22">
-      <div class="popup-box">
-        <img alt="Homai Rice (206)" src="images/homai_rice.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup23">
-        <img alt="Oreo Cookie (1664082)" src="images/oreo.jpg" />
-      </a>
-      <div class="item-name">Oreo Cookie (1664082)</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup23">
-      <div class="popup-box">
-        <img alt="Oreo Cookie (1664082)" src="images/oreo.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup24">
-        <img alt="Francisco Deli Hamburger Buns (1305348)" src="images/hamburger_buns.jpg" />
-      </a>
-      <div class="item-name">Francisco Deli Hamburger Buns (1305348)</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup24">
-      <div class="popup-box">
-        <img alt="Francisco Deli Hamburger Buns (1305348)" src="images/hamburger_buns.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup25">
-        <img alt="Wilsey Mayo (39719)" src="images/mayo.jpg" />
-      </a>
-      <div class="item-name">Wilsey Mayo (39719)</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup25">
-      <div class="popup-box">
-        <img alt="Wilsey Mayo (39719)" src="images/mayo.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup26">
-        <img alt="C &amp; H Granulated Sugar (814602)" src="images/granulated_sugar.jpg" />
-      </a>
-      <div class="item-name">C &amp; H Granulated Sugar (814602)</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup26">
-      <div class="popup-box">
-        <img alt="C &amp; H Granulated Sugar (814602)" src="images/granulated_sugar.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup27">
-        <img alt="Kirkland Cheddar Monterey Jack (22107)" src="images/cheddar_monetary_jack.jpg" />
-      </a>
-      <div class="item-name">Kirkland Cheddar Monterey Jack (22107)</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup27">
-      <div class="popup-box">
-        <img alt="Kirkland Cheddar Monterey Jack (22107)" src="images/cheddar_monetary_jack.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup28">
-        <img alt="Kirkland Homogenized Milk" src="images/kirkland_milk.jpg" />
-      </a>
-      <div class="item-name">Kirkland Homogenized Milk</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup28">
-      <div class="popup-box">
-        <img alt="Kirkland Homogenized Milk" src="images/kirkland_milk.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup29">
-        <img alt="Heinz Apple Cider Vinegar (716667)" src="images/heinz_apple_cider_vinegar.jpg" />
-      </a>
-      <div class="item-name">Heinz Apple Cider Vinegar (716667)</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup29">
-      <div class="popup-box">
-        <img alt="Heinz Apple Cider Vinegar (716667)" src="images/heinz_apple_cider_vinegar.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup30">
-        <img alt="Romaine Hearts 6ct (39036)" src="images/romaine_hearts.jpg" />
-      </a>
-      <div class="item-name">Romaine Hearts 6ct (39036)</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup30">
-      <div class="popup-box">
-        <img alt="Romaine Hearts 6ct (39036)" src="images/romaine_hearts.jpg" />
-      </div>
-    </a>
-    <div class="item" data-tags="hj">
-      <a href="#popup31">
-        <img alt="7.75 Jumbo White Paper Straw" src="images/paper_straws.jpg" />
-      </a>
-      <div class="item-name">7.75 Jumbo White Paper Straw</div>
-      <div class="tags"><span class="tag" style="background-color: #4CAF50; color: white;">HJ</span></div>
-    </div>
-    <a class="lightbox" href="#" id="popup31">
-      <div class="popup-box">
-        <img alt="7.75 Jumbo White Paper Straw" src="images/paper_straws.jpg" />
-      </div>
-    </a>
-  </div>
-  <!-- Include footer -->
-  <div id="footer"></div>
-  <script>
+<div id="tag-filters"><span class="tag-filter" data-filter="all" style="background-color: #ccc; color: white;">All</span><span class="tag-filter" data-filter="hj" style="background-color: #4CAF50; color: white;">HJ</span><span class="tag-filter" data-filter="bbt" style="background-color: #2196F3; color: white;">BBT</span></div><input id="search-input" placeholder="Search items..." type="text"/>
+<div id="items-container">Loading items...</div>
+<!-- Include footer -->
+<div id="footer"></div>
+<script>
     fetch('components/footer.html')
       .then(response => response.text())
       .then(data => { document.getElementById('footer').innerHTML = data; });
   </script>
-  <script defer="" src="js/main.js"></script>
-</body>
+<script defer="" src="js/main.js"></script>
+<script>
+fetch('items.json')
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById('items-container');
+    container.innerHTML = '';
 
+    data.forEach((item, index) => {
+      const itemDiv = document.createElement('div');
+      itemDiv.className = 'item';
+      itemDiv.dataset.tags = item.tags.join(' ');
+
+      itemDiv.innerHTML = `
+        <a href="#popup${index}">
+          <img src="${item.image}" alt="${item.name}" />
+        </a>
+        <div class="item-name">${item.name}</div>
+        <div class="tags">
+          ${item.tags.map(tag => `<span class="tag" style='background-color:#4CAF50;color:white;'>${tag.toUpperCase()}</span>`).join('')}
+        </div>
+      `;
+
+      const popup = document.createElement('a');
+      popup.className = 'lightbox';
+      popup.href = '#';
+      popup.id = `popup${index}`;
+      popup.innerHTML = `
+        <div class="popup-box">
+          <img src="${item.image}" alt="${item.name}" />
+        </div>
+      `;
+
+      container.appendChild(itemDiv);
+      container.appendChild(popup);
+    });
+
+    if (typeof filterItems === 'function') filterItems();
+});
+</script></body>
 </html>
