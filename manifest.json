@@ -1,0 +1,15 @@
+{
+    "name": "Offline Item Gallery",
+    "short_name": "ItemGallery",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "icons": [
+        {
+            "src": "images/kirkland_milk.jpeg",
+            "sizes": "192x192",
+            "type": "image/jpeg"
+        }
+    ]
+}
