@@ -225,35 +225,35 @@
   },
   {
     "name": "Pomegranate Syrup",
-    "image": "images/.jpg",
+    "image": "images/pomegranate_syrup.jpg",
     "tags": [
       "bbt"
     ]
   },
   {
     "name": "Strawberry Syrup",
-    "image": "images/.jpg",
+    "image": "images/strawberry_syrup.jpg",
     "tags": [
       "bbt"
     ]
   },
   {
     "name": "Dragon Fruit Syrup",
-    "image": "images/.jpg",
+    "image": "images/dragonfruit_syrup.jpg",
     "tags": [
       "bbt"
     ]
   },
   {
     "name": "Mango Syrup",
-    "image": "images/.jpg",
+    "image": "images/mango_syrup.jpg",
     "tags": [
       "bbt"
     ]
   },
   {
     "name": "Watermelon Syrup",
-    "image": "images/.jpg",
+    "image": "images/watermelon_syrup.jpg",
     "tags": [
       "bbt"
     ]
