@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
           const tagName = tag.textContent.trim().toLowerCase();
           if (tagName === 'hj') {
             tag.style.backgroundColor = '#4CAF50';
-          } else if (tagName === 'bbt') {
+          } else if (tagName === 'mbt') {
             tag.style.backgroundColor = '#2196F3';
           } else {
             tag.style.backgroundColor = '#aaa';
